@@ -8,10 +8,6 @@
 #include <strings.h>
 #include <stdbool.h>
 
-// Definitions
-
-typedef unsigned char   byte;
-
 // Functions
 
 void Com_ReplaceCharacter(char* str, const char toReplace, const char toPlace);
