@@ -144,7 +144,7 @@ bool LoadPAK(const char* filename, bool sinPak)
     return true;
 }
 
-inline void PrintUsage(void)
+inline static void PrintUsage(void)
 {
     puts("Usage: pakextract.exe -format (pak/sin) -outdir \"c:\\myfolder\" <pakfile>");
 }

@@ -4,9 +4,9 @@
 
 #pragma once
 
-#ifdef _WIN32
-
 #include <stdint.h>
+
+#ifdef _WIN32
 
 // Start the counter
 void StartCounter();
