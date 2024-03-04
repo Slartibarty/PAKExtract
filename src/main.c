@@ -4,10 +4,11 @@
 // FUTUREPROOF: extracted PAK directories might overrun Windows max path length of 260
 //
 
-#include <stdlib.h> // Malloc
-#include <stdio.h>
-#include <string.h> // strcpy, strcat
 #include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h> // Malloc
+#include <string.h> // strcpy, strcat
 
 #include "common.h"
 #include "filesystem.h"
@@ -39,7 +40,7 @@ void ExtractAllPAKFiles(void* pakFileDesc, int numPakFiles, FILE* pakHandle, boo
 {
     FILE*   newFile;
     int     fileNum;
-    byte*   rawData;
+    uint8_t*   rawData;
     char    nameBuf[_MAX_PATH];
     dpackfile_t*    localPakDesc = NULL;	// Shut the compiler up
     dsinpackfile_t* sinLocalPakDesc = NULL;	// Shut the compiler up
@@ -144,7 +145,7 @@ bool LoadPAK(const char* filename, bool sinPak)
     return true;
 }
 
-inline void PrintUsage(void)
+inline static void PrintUsage(void)
 {
     puts("Usage: pakextract.exe -format (pak/sin) -outdir \"c:\\myfolder\" <pakfile>");
 }

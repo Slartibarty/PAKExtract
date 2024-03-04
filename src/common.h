@@ -5,21 +5,20 @@
 #pragma once
 
 #include <string.h>
+#include <strings.h>
 #include <stdbool.h>
-
-// Definitions
-
-typedef unsigned char   byte;
 
 // Functions
 
 void Com_ReplaceCharacter(char* str, const char toReplace, const char toPlace);
 
 // Convert Windows delimiter to Unix ones
-inline void Com_WindowsToUnix(char* path)
+inline static void Com_WindowsToUnix(char* path)
 {
     #ifdef _WIN32 // Should always be using Unix delimiters on Unix
     Com_ReplaceCharacter(path, '\\', '/');
+    #else
+    (void)path;
     #endif
 }
 
@@ -29,7 +28,7 @@ inline void Com_UnixToWindows(char* path)
     Com_ReplaceCharacter(path, '/', '\\');
 }
 
-inline bool Q_stricmp(const char* str1, const char* str2)
+inline static bool Q_stricmp(const char* str1, const char* str2)
 {
 #ifdef _WIN32
     return (_stricmp(str1, str2) == 0);

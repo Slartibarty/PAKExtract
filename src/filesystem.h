@@ -5,6 +5,8 @@
 #pragma once
 
 #include <stdbool.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #ifdef _WIN32
 #include <direct.h>
@@ -16,17 +18,17 @@
 
 // Inlines
 
-inline int FS_MakeDir(const char* path)
+inline static int FS_MakeDir(const char* path)
 {
 #ifdef _WIN32
     return _mkdir(path);
 #else
-    return mkdir(path);
+    return mkdir(path, ACCESSPERMS);
 #endif
 }
 
 // TODO: Considering ignoring the return value...
-inline char* FS_GetCWD(char* buf, int bufsize)
+inline static char* FS_GetCWD(char* buf, int bufsize)
 {
 #ifdef _WIN32
     char* retVal = _getcwd(buf, bufsize);
